@@ -17,7 +17,7 @@ export default function Home() {
           <h1 className="patient-info__text--primary">Patient Information</h1>
 
           <div className="patient-info__box">
-            <div className="patient-info__box--1">
+            <div className="patient-info__box--1 mb-2 mr-2">
               <label className="label">Gender</label>
               <select className="input">
                 <option>Male</option>
@@ -25,7 +25,7 @@ export default function Home() {
               </select>
             </div>
 
-            <div className="patient-info__box--2">
+            <div className="patient-info__box--2 mb-2 mr-2">
               <label className="label">Age</label>
               <input type="number" className="input" />
             </div>
@@ -41,7 +41,7 @@ export default function Home() {
           <h1 className="timeline__text--primary">Timeline</h1>
 
           <div className="timeline__flex">
-            <div className="timeline__flex--1">
+            <div className="timeline__flex--1 mb-2 mr-2">
               <ul>
                 <li onClick={() => setActiveTimeline(state => !state)}>
                   <div className="timeline__list">
@@ -100,8 +100,8 @@ export default function Home() {
             </div>
 
             <div className="timeline__flex--2">
-              <div className="box">
-                <div className="from">
+              <div className="box mb-2">
+                <div className="from mr-2">
                   <label className="label">From</label>
                   <input type="date" className="input" />
                 </div>
@@ -113,10 +113,10 @@ export default function Home() {
               </div>
 
               <label className="label">Detail</label>
-              <textarea className="textarea" />
+              <textarea className="textarea mb-2" />
 
-              <div className="box">
-                <div className="location-type">
+              <div className="box mb-2">
+                <div className="location-type mr-2">
                   <label className="label">Location Type</label>
                   <select className="input">
                     <option>INDOOR</option>

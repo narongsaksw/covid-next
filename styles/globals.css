@@ -31,6 +31,13 @@ a {
   box-sizing: border-box;
 }
 
+.mb-2{
+  margin-bottom: 2rem;
+}
+.mr-2 {
+  margin-right: 2rem;
+}
+
 .label {
   display: block;
   font-size: 1.6rem;
@@ -39,7 +46,7 @@ a {
 
 .input {
   width: 100%;
-  height: 30px;
+  height: 3rem;
   border: 1px solid #000;
   border-radius: 3px;
   background-color: var(--white);
@@ -50,7 +57,6 @@ a {
   height: 20rem;
   border: 1px solid #000;
   border-radius: 3px;
-  margin-bottom: 2rem;
 }
 
 .header {
@@ -94,12 +100,10 @@ a {
 
 .patient-info__box--1 {
   width: 30%;
-  margin-right: 2rem;
 }
 
 .patient-info__box--2 {
   width: 10%;
-  margin-right: 2rem;
 }
 
 .patient-info__box--3 {
@@ -122,10 +126,9 @@ a {
 
 .timeline__flex--1 {
   width: 50%;
-  border: 1px solid var(--yellow);
   border-radius: 3px;
+  border: 1px solid var(--yellow);
   padding: 1rem;
-  margin-right: 2rem;
 }
 
 .timeline__flex--1 ul {
@@ -155,18 +158,16 @@ a {
 
 .timeline__flex--2 {
   width: 50%;
+  border-radius: 3px;
   height: 100%;
   border: 1px solid var(--light-blue);
-  border-radius: 3px;
   padding: 2rem 1.5rem;
 }
 .timeline__flex--2 .box {
   display: flex;
-  margin-bottom: 2rem;
 }
 .timeline__flex--2 .box .from {
   width: 70%;
-  margin-right: 1rem;
 }
 .timeline__flex--2 .box .to {
   width: 30%;
@@ -174,7 +175,6 @@ a {
 
 .timeline__flex--2 .box .location-type {
   width: 40%;
-  margin-right: 1rem;
 }
 .timeline__flex--2 .box .location-name {
   width: 60%;
@@ -192,7 +192,7 @@ a {
   content: "";
   position: absolute;
   top: 0px;
-  left: 20%;
+  left: 15%;
   bottom: 0px;
   width: 4px;
   border-left: 1px dotted var(--light-blue);
@@ -207,12 +207,11 @@ a {
   clear: both;
   text-align: left;
   position: relative;
-  display: flex;
 }
 .timeline__card--entry .entry__title {
   margin-bottom: 0.5em;
   float: left;
-  width: 20%;
+  width: 15%;
   padding: .5rem 3rem 0 0;
   position: relative;
 }
@@ -224,7 +223,7 @@ a {
   border: 4px solid var(--yellow);
   background-color: var(--yellow);
   border-radius: 100%;
-  top: 10%;
+  top: 35%;
   right: -5px;
   z-index: 99;
 }
@@ -321,11 +320,9 @@ a {
 
   .patient-info__box--1 {
     width: 100%;
-    margin-bottom: 1rem;
   }
   .patient-info__box--2 {
     width: 100%;
-    margin-bottom: 1rem;
   }
   .patient-info__box--3 {
     width: 100%;
@@ -345,7 +342,6 @@ a {
 
   .timeline__flex--1 {
     width: 100%;
-    margin-bottom: 2rem;
   }
 
   .timeline__flex--2 {
@@ -357,16 +353,36 @@ a {
   }
 }
 
+@media screen and (min-width: 768px) {
+  .timeline__card--entry {
+    display: flex;
+  }
+
+  .timeline__card--entry .entry__title:before {
+    top: 10%;
+  }
+}
+
 @media screen and (min-width: 1024px) {
   .timeline__card--entry .entry__title {
     width: 15%;
   }
 
   .timeline__card--entry .entry__body {
-    width: 85%;
+    width: 100%;
   }
 
   .timeline__card:before {
     left: 15%;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .timeline__card--entry .entry__title {
+    width: 10%;
+  }
+
+  .timeline__card:before {
+    left: 10%;
   }
 }
