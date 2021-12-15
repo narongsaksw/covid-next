@@ -283,6 +283,10 @@ a {
   background-color: var(--yellow);
 }
 
+.error__message {
+  color: var(--red);
+}
+
 @media screen and (max-width: 320px) {
   .timeline__card:before {
     display: none;
