@@ -8,3 +8,7 @@ export const addUserAndTimeline = (values: FormData) => {
 export const getAllUser = () => {
     return http.get<User[]>('/users')
 }
+
+export const deleteTimeline = (citizenId: string, timelineId: string) => {
+    return http.delete(`/users/${citizenId}/timelines/${timelineId}`)
+}
