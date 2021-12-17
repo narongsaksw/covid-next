@@ -18,8 +18,8 @@ export enum LOCATION {
     TRAVELLING = 'TRAVELLING'
 }
 export enum GENDER {
-    MALE = 'MALE',
-    FEMALE = 'FEMALE',
+    MALE = 'Male',
+    FEMALE = 'Female',
 }
 
 export const formSchema = yup.object({
@@ -31,10 +31,14 @@ export const formSchema = yup.object({
     to: yup.string().required('To Date is required.'),
     detail: yup.string().required('Detail is required.'),
     locationType: yup.string().required('Location Type is required.'),
-    locationName: yup.string().required('Location Name is required.'),
+    locationName: yup.string().ensure().when('locationType', {
+        is: (locationType: string) => locationType === LOCATION.INDOOR || locationType === LOCATION.OUTDOOR,
+        then: yup.string().required('Location Name is required.')
+    }),
 })
 
 export interface Timeline {
+    _id: string;
     from: string;
     to: string;
     detail: string;
