@@ -1,11 +1,13 @@
 import React, { useState, useEffect, SetStateAction, Dispatch } from 'react'
+import { useRouter } from 'next/router'
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
+import dayjs from 'dayjs';
 
 import { FormData, GENDER, LOCATION, formSchema, User } from '../type/type'
 
-import { addUserAndTimeline, getAllUser } from '../services/user.service'
+import { addUserAndTimeline, getAllUser, deleteTimeline } from '../services/user.service'
 
 const errorMessage = (msg: string) => {
   return <p className="error__message">* {msg}</p>
@@ -18,6 +20,7 @@ export type UserItemType = {
 }
 
 const UserItem = (args: UserItemType) => {
+  const router = useRouter()
   const { user, active, setActive } = args
   return (
     <>
@@ -34,17 +37,20 @@ const UserItem = (args: UserItemType) => {
           return (
             <div key={idx} className="timeline__card--entry">
               <div className="entry__title">
-                <h4>{t.from}</h4>
+                <h4>{dayjs(t.from).format('DD-MM-YYYY')}</h4>
               </div>
               <div className="entry__body">
                 <div>
-                  <p>{t.from} - {t.to}</p>
+                  <p>{dayjs(t.from).format('HH:mm')} - {t.to}</p>
                 </div>
                 <div className="entry__body--detail">
                   <p className="desc">{t.detail}</p>
                   <p className="location">{t.locationName}</p>
                 </div>
-                <i className="cil-x "></i>
+                <i className="cil-x " onClick={async () => {
+                    await deleteTimeline(user.citizenId, t._id)
+                    router.reload()
+                  }}></i>
               </div>
             </div>
           )
@@ -56,7 +62,8 @@ const UserItem = (args: UserItemType) => {
 
 
 export default function Home() {
-  const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
+  const router = useRouter()
+  const { register, handleSubmit, formState: { errors }, getValues } = useForm<FormData>({
     resolver: yupResolver(formSchema)
   });
   const [activeTimeline, setActiveTimeline] = useState<boolean>(false)
@@ -72,8 +79,8 @@ export default function Home() {
   },[])
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
-    const response = await addUserAndTimeline(data)
-    alert(response.data.message)
+    await addUserAndTimeline(data)
+    router.reload()
   };
 
   return (
